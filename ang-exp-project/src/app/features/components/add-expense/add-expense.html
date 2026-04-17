@@ -1,0 +1,112 @@
+<div class="add-expense">
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Add Expense</h1>
+    <p>Record a new expense to your tracker</p>
+  </header>
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Date Field -->
+      <div class="form-group">
+        <label for="date">Date <span style="color: var(--color-danger)">*</span></label>
+        <input
+          id="date"
+          type="date"
+          formControlName="date"
+          (blur)="form.get('date')?.markAsTouched()"
+        />
+        <span
+          class="error-message"
+          *ngIf="
+            form.get('date')?.touched &&
+            form.get('date')?.invalid &&
+            form.get('date')?.errors?.['required']
+          "
+        >
+          Date is required
+        </span>
+      </div>
+
+      <!-- Category and Amount Row -->
+      <div class="form-row">
+        <!-- Category Field -->
+        <div class="form-group">
+          <label for="category">Category <span style="color: var(--color-danger)">*</span></label>
+          <select
+            id="category"
+            formControlName="category"
+            (blur)="form.get('category')?.markAsTouched()"
+          >
+            <option value="">Select a category</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Rent">Rent</option>
+          </select>
+          <span
+            class="error-message"
+            *ngIf="
+              form.get('category')?.touched &&
+              form.get('category')?.invalid &&
+              form.get('category')?.errors?.['required']
+            "
+          >
+            Category is required
+          </span>
+        </div>
+
+        <!-- Amount Field -->
+        <div class="form-group">
+          <label for="amount">Amount <span style="color: var(--color-danger)">*</span></label>
+          <input
+            id="amount"
+            type="number"
+            placeholder="0.00"
+            formControlName="amount"
+            (blur)="form.get('amount')?.markAsTouched()"
+          />
+          <span
+            class="error-message"
+            *ngIf="
+              form.get('amount')?.touched &&
+              form.get('amount')?.invalid &&
+              form.get('amount')?.errors?.['required']
+            "
+          >
+            Amount is required
+          </span>
+        </div>
+      </div>
+
+      <!-- Description Field -->
+      <div class="form-group">
+        <label for="description"
+          >Description <span style="color: var(--color-danger)">*</span></label
+        >
+        <input
+          id="description"
+          type="text"
+          placeholder="E.g., Lunch with colleagues"
+          formControlName="description"
+          (blur)="form.get('description')?.markAsTouched()"
+        />
+        <span
+          class="error-message"
+          *ngIf="
+            form.get('description')?.touched &&
+            form.get('description')?.invalid &&
+            form.get('description')?.errors?.['required']
+          "
+        >
+          Description is required
+        </span>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" [disabled]="form.invalid" class="btn-primary">Add Expense</button>
+      </div>
+    </form>
+  </div>
+</div>

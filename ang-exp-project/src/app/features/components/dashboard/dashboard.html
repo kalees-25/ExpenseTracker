@@ -1,0 +1,67 @@
+<div class="dashboard">
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Dashboard</h1>
+    <p>Overview of your expenses and spending patterns</p>
+  </header>
+
+  <!-- Summary Statistics -->
+  <div class="summary">
+    <div class="stat-card success">
+      <h3>Total Expenses</h3>
+      <p class="stat-value">{{ totalExpense }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Recent Entries</h3>
+      <p class="stat-value">{{ recentExpenses.length }}</p>
+      <p class="stat-subtext">entries tracked</p>
+    </div>
+  </div>
+
+  <!-- Recent Expenses Table -->
+  <section class="section">
+    <h3>Recent Expenses</h3>
+
+    <div class="table-wrapper" *ngIf="recentExpenses.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let exp of recentExpenses">
+            <td>{{ exp.date }}</td>
+            <td>
+              <span class="badge primary">{{ exp.category }}</span>
+            </td>
+            <td>{{ exp.description }}</td>
+            <td>
+              <strong>{{ exp.amount | currency }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="empty-state" *ngIf="recentExpenses.length === 0">
+      <p>📊 No expenses yet. Start by adding your first expense!</p>
+    </div>
+  </section>
+
+  <!-- Category Breakdown -->
+  <section class="section">
+    <h3>Category Breakdown</h3>
+
+    <div class="category-list">
+      <div class="category-card" *ngFor="let item of categoryTotals | keyvalue">
+        <span>{{ item.key }}</span>
+        <strong>{{ item.value | currency }}</strong>
+      </div>
+    </div>
+  </section>
+</div>

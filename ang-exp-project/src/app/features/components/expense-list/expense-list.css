@@ -1,0 +1,258 @@
+/* ============================================================================
+   EXPENSE LIST - Detailed Expense Management
+   ========================================================================== */
+
+:host {
+  display: block;
+  background-color: var(--color-bg-secondary);
+  flex: 1;
+}
+
+.expense-list {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+/* ============================================================================
+   Page Header
+   ========================================================================== */
+.page-header {
+  margin-bottom: var(--spacing-2xl);
+  
+  h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+  }
+  
+  p {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+  }
+}
+
+/* ============================================================================
+   Filters Section
+   ========================================================================== */
+.filters {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: var(--spacing-lg);
+  align-items: flex-end;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  
+  label {
+    margin-bottom: 0;
+  }
+}
+
+.filter-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+/* ============================================================================
+   Table Styling
+   ========================================================================== */
+.table-container {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  thead {
+    background-color: var(--color-bg-tertiary);
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  th {
+    padding: var(--spacing-lg);
+    text-align: left;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  td {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+  
+  tbody tr {
+    transition: background-color var(--transition-fast);
+    
+    &:hover {
+      background-color: var(--color-bg-secondary);
+    }
+    
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+/* ============================================================================
+   Action Buttons
+   ========================================================================== */
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  
+  button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+.btn-edit {
+  background-color: var(--color-info);
+  
+  &:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
+}
+
+.btn-delete {
+  background-color: var(--color-danger);
+  
+  &:hover:not(:disabled) {
+    background-color: #dc2626;
+  }
+}
+
+/* ============================================================================
+   Empty State
+   ========================================================================== */
+.empty-state {
+  background-color: var(--color-bg-primary);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  text-align: center;
+  
+  p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    margin: 0;
+  }
+}
+
+/* ============================================================================
+   Badge Styling
+   ========================================================================== */
+.category-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: capitalize;
+}
+
+.amount-cell {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-success);
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-actions {
+    width: 100%;
+    
+    button {
+      flex: 1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .expense-list {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .filters {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  table {
+    font-size: var(--font-size-sm);
+  }
+  
+  th, td {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .expense-list {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .filters {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+  
+  table {
+    font-size: var(--font-size-xs);
+  }
+  
+  th, td {
+    padding: var(--spacing-sm);
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .action-buttons {
+    gap: var(--spacing-xs);
+    
+    button {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: var(--font-size-xs);
+    }
+  }
+}
