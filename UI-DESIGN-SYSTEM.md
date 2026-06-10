@@ -2,7 +2,7 @@
 
 ## Overview
 
-Your expense tracker app has been completely transformed with a professional, cohesive design system. All components now follow modern UI/UX best practices with consistent spacing, typography, colors, and responsive design.
+In my expense tracker app has been completely transformed with a professional, cohesive design system. All components now follow modern UI/UX best practices with consistent spacing, typography, colors, and responsive design.
 
 ---
 
